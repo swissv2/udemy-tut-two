@@ -9,5 +9,6 @@ class Permission extends Model
 {
     use HasFactory;
 
+    //add database inputs
     protected $fillable = ['name'];
 }
