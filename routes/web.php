@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +24,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//add middleware
-Route::middleware(['auth'])->group(function() {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+//add middleware for the admin section
+Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('/admin')->group(function() {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/permissions', PermissionController::class);
 });
 
 require __DIR__.'/auth.php';

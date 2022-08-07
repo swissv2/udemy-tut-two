@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    //identify roles and such
+    public function hasRole($name): bool
+    {
+        return $this->role()->where('name', $name)->exists();
+    }
 }
