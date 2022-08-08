@@ -7,10 +7,8 @@
 
         <title>Udemy - Tut2 - Admin</title>
         
-       <!-- Scripts -->
-       @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-       <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
         <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-roboto">
@@ -19,33 +17,20 @@
             <div class="flex-1 flex flex-col overflow-hidden">
                 @include('layouts.header')
 
-                <!-- add a notification message -->
+                <!-- add a notification message -->              
+
                 @if (Session::has('message'))
-                <div class="bg-indigo-600" x-data="{ bannerOpen: true }" x-show="bannerOpen">
-                <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-                    <div class="flex items-center justify-between flex-wrap">
-                    <div class="w-0 flex-1 flex items-center">
-                        <span class="flex p-2 rounded-lg bg-indigo-800">
-                        <!-- Heroicon name: outline/speakerphone -->
-                        <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="white" ><title/><path d="M64,128a10.18,10.18,0,0,1-7.22-3h0L3,71.22A10.21,10.21,0,0,1,3,56.78L56.78,3A10.22,10.22,0,0,1,71.22,3L125,56.78a10.21,10.21,0,0,1,0,14.44L71.22,125A10.18,10.18,0,0,1,64,128Zm-4.39-5.82a6.2,6.2,0,0,0,8.78,0l53.79-53.79a6.2,6.2,0,0,0,0-8.78L68.39,5.82a6.2,6.2,0,0,0-8.78,0L5.82,59.61a6.2,6.2,0,0,0,0,8.78l53.79,53.79Z"/><path d="M64,82a8.24,8.24,0,0,1-8.25-7.91L54.27,38.6A8.25,8.25,0,0,1,62.52,30h3a8.25,8.25,0,0,1,8.25,8.6L72.25,74.09A8.24,8.24,0,0,1,64,82ZM62.52,34a4.25,4.25,0,0,0-4.25,4.43l1.48,35.49a4.25,4.25,0,0,0,8.5,0l1.48-35.49A4.25,4.25,0,0,0,65.48,34Z"/><path d="M64,102a8,8,0,1,1,8-8A8,8,0,0,1,64,102Zm0-12a4,4,0,1,0,4,4A4,4,0,0,0,64,90Z"/></svg>
-                        </span>
-                        <p class="ml-3 font-medium text-white truncate">
-                        <span class="md:hidden"> {{ Session::get('message') }} </span>
-                        <span class="hidden md:inline"> {{ Session::get('message') }}  </span>
-                        </p>
-                    </div>
-                    <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-                        <button type="button" @click="bannerOpen = false" class="-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2">
-                        <span class="sr-only">Dismiss</span>
-                        <!-- Heroicon name: outline/x -->
-                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        </button>
-                    </div>
-                    </div>
+                <div id="alert-1" class="flex p-4 mb-4 bg-blue-100 rounded-lg dark:bg-blue-200" role="alert">
+                <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-blue-700 dark:text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Info</span>
+                <div class="ml-3 text-sm font-medium text-blue-700 dark:text-blue-800">
+                    {{ Session::get('message') }} 
                 </div>
-                </div>
+                    <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-blue-100 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300" data-dismiss-target="#alert-1" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                </div>                
                @endif
                 <!-- end notification message -->
 
@@ -56,6 +41,6 @@
                 </main>
             </div>
         </div>
-        @tailwind components;
+        <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     </body>
 </html>
