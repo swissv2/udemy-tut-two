@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
 
         //call that hiz
         $this->call(AdminSeeder::class);
+        $this->call(PermissionSeeder::class);
     }
 }

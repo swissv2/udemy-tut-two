@@ -27,15 +27,23 @@
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
 
-              @foreach ($roles as $role)
+              <?php 
+                //start a counter so the ID count is even.
+                $count = 1;
+              ?>
+
+              @foreach ($roles as $role)              
               <tr>
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $role -> id }}</td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $count; ?></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $role -> name }}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> stuff
-
-
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> 
+                  @forelse ($role->permissions as $rp)
+                    <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">{{ $rp->name }}</span>
+                  @empty
+                    <span class="bg-gray-100 text-gray-400 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">No permissions assigned</span>
+                  @endforelse
                 </td>                
-                <td class="flex whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium sm:pr-6" >
+                <td class="flex whitespace-nowrap py-4 text-sm text-right font-medium " >
                     [<a href="{{ route('admin.roles.edit', $role->id ) }}" class="text-indigo-600 hover:underline text-right"> Edit </a>] &nbsp;
                     <form method="POST"
                           action="{{ route('admin.roles.destroy', $role->id) }}"
@@ -46,6 +54,11 @@
                     </form>
                 </td>
               </tr>
+
+              <?php 
+                //increment counter by 1
+                $count++;
+              ?>
               @endforeach
 
             </tbody>
