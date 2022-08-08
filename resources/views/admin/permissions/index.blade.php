@@ -19,6 +19,7 @@
               <tr>
                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Permission</th>
+                
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                   <span class="sr-only">Edit</span>
                 </th>
@@ -32,7 +33,7 @@
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $permission-> name }}</td>
                 <td class="relative whitespace-nowrap text-right text-sm font-medium sm:pr-6"> <!-- py-4 pl-3 px-6 pr-4 -->
                   <div class="flex space-x-4 px-4 text-right" >
-                  [<a href="{{ route('admin.permissions.edit', $permission->id ) }}" class="text-indigo-600 hover:underline"> Edit </a>] &nbsp;
+                  [<a href="{{ route('admin.permissions.edit', $permission->id ) }}" class="text-indigo-600 hover:underline"> Edit </a>]
                     <form method="POST"
                           action="{{ route('admin.permissions.destroy', $permission->id) }}"
                           onsubmit="return confirm('Deleting Permission. Are you sure?');">
