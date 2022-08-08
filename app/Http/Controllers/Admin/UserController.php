@@ -8,12 +8,13 @@ use App\Models\User;
 use App\Models\Role;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::all()->except(Auth::id());
 
         return view('admin.users.index', compact('users'));
     }
@@ -30,5 +31,11 @@ class UserController extends Controller
         $user->update($request->validated());
 
         return to_route('admin.users.index')->with('message', 'User updated in database.');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return to_route('admin.users.index')->with('message', 'User deleted from database.');
     }
 }
