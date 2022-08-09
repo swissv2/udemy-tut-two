@@ -20,11 +20,11 @@ class AdminSeeder extends Seeder
     public function run()
     {
         //give the user stuff out
-        $userRole = Role::create(['name' => 'user']);
+        $userRole = Role::create(['name' => 'user', 'edit_id' => 0]);
         //give the admin stuff out
-        $adminRole = Role::create(['name' => 'admin']);
+        $adminRole = Role::create(['name' => 'admin', 'edit_id' => 1]);
          //give the author stuff out
-        $authorRole = Role::create(['name' => 'author']);
+        $authorRole = Role::create(['name' => 'author', 'edit_id' => 0]);
 
 
         //create the Admin seeder account

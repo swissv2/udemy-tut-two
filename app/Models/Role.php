@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     //add database inputs
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'edit_id'];
 
     public function users()
     {

@@ -8,6 +8,7 @@ use App\Models\Permission;
 use App\Models\Permission_Role;
 use Illuminate\Http\Request;
 
+
 class RoleController extends Controller
 {
     public function index()
@@ -15,8 +16,7 @@ class RoleController extends Controller
         //set the roles on fire
         //$roles = Role::all();
 
-        //$roles = Role::whereNotIn('name', ['admin'])->orderBy('id')->get();
-        $roles = Role::whereNotIn('id', [2])->orderBy('id')->get();
+        $roles = Role::whereNotIn('name', ['admin'])->orderBy('id')->get();        
 
         return view('admin.roles.index', compact('roles'));
     }
@@ -37,7 +37,9 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $permissions = Permission::all();
-        return view('admin.roles.edit', compact('role', 'permissions'));
+
+        return view('admin.roles.edit', compact('role', 'permissions'));            
+        
     }
 
     public function update(Request $request, Role $role)

@@ -20,11 +20,11 @@
                         {{ __('Posts') }}
                     </x-nav-link>
 
-                    @if (Auth::user()->hasRole('admin'))
+                    @admin
                         <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                             {{ __('Admin') }}
                         </x-nav-link>
-                    @endif
+                    @endadmin
                 </div>
             </div>
 
