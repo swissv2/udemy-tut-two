@@ -21,8 +21,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        //call that hiz
+        //plant the tree
         $this->call(AdminSeeder::class);
         $this->call(PermissionSeeder::class);
+        //create fake posts
+        \App\Models\Post::factory(10)->create();
     }
 }
