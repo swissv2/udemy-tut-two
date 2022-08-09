@@ -23,6 +23,8 @@ class AdminSeeder extends Seeder
         $userRole = Role::create(['name' => 'user']);
         //give the admin stuff out
         $adminRole = Role::create(['name' => 'admin']);
+         //give the author stuff out
+        $authorRole = Role::create(['name' => 'author']);
 
 
         //create the Admin seeder account
@@ -32,6 +34,24 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
             'role_id' => $adminRole->id,
+        ]);
+
+        //create an author seeder account
+        User::create([
+            'name' => 'Swissv2',
+            'email' => 'swissv2@udemy-tut-two.test',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now(),
+            'role_id' => $authorRole->id,
+        ]);
+
+         //create a basic user seeder account
+         User::create([
+            'name' => 'Tiny Tim',
+            'email' => 'tiny@tim.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now(),
+            'role_id' => $userRole->id,
         ]);
 
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\Permission;
+use App\Models\Permission_Role;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -56,6 +57,8 @@ class RoleController extends Controller
     public function assignPermissions(Request $request, Role $role)
     {
         $role->permissions()->sync($request->permissions);
-        return back()->with('message', 'Permission(s) assigned to Role.');
+        //playing around with returning to main page once editing.
+        //return back()->with('message', 'Permission(s) assigned to Role.');
+        return to_route('admin.roles.index')->with('message', 'Permission(s) assigned to Role.');
     }
 }

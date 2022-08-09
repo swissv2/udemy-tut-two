@@ -61,7 +61,7 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Post $post)
+    public function update(User $user)
     {
         //update post
         return $user->role->hasPermission('Update Post');
