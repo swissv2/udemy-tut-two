@@ -64,18 +64,8 @@
             <tbody class="divide-y divide-gray-200 bg-white">
 
               <?php 
-                //start a counter so the ID count is even.
-
-                //get the current page of the query
-                $cpage = $posts->currentPage();
-                //ignore ID data inaccuracies. Method below counts the number properly.
-                if ($cpage == 1) {
-                  $count = 1;
-                } else {
-                  $count = ($cpage * 6) - 5;
-                }
-
-               
+                //firstItem() represents 1st item in the data sequence for the page
+                $count = $posts->firstItem();
               ?>
               @foreach ($posts as $post)      
               <tr>
