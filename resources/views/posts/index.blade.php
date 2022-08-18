@@ -65,12 +65,21 @@
 
               <?php 
                 //start a counter so the ID count is even.
-                $count = 1;
-              ?>
 
-              @foreach ($posts as $post)              
+                
+                $cpage = $posts->currentPage();
+
+                if ($cpage == 1) {
+                  $cpage = 1;
+                } else {
+                  $cpage = 7;
+                }
+
+               
+              ?>
+              @foreach ($posts as $post)      
               <tr>
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $count; ?></td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $cpage ; ?></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $post -> title }}</td>            
                 <td class="flex whitespace-nowrap py-4 text-sm text-right font-medium " >
                     @can('update', $post)
@@ -91,13 +100,23 @@
 
               <?php 
                 //increment counter by 1
-                $count++;
+                $cpage++;
               ?>
               @endforeach
 
             </tbody>
+           
+
           </table>
+         
         </div>
+          <!-- pagination  -->
+          <div class="mt-2">
+          {{ $posts->onEachSide(2)->links() }}
+          </div>
+          <!-- /pagination -->
+
+         
       </div>
     </div>
   </div>

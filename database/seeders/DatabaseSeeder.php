@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(PermissionSeeder::class);
         //create fake posts
-        \App\Models\Post::factory(10)->create();
+        \App\Models\Post::factory(30)->create();
     }
 }

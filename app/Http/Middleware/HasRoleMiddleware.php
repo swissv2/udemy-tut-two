@@ -18,7 +18,7 @@ class HasRoleMiddleware
     {
         if (!auth()->user() || !auth()->user()->hasRole($role)) {
             //nice redirect method
-            //return redirect('/dashboard');
+            return redirect('/dashboard');
             abort(403);           
         }
         return $next($request);
