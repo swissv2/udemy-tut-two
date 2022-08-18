@@ -66,20 +66,20 @@
               <?php 
                 //start a counter so the ID count is even.
 
-                
+                //get the current page of the query
                 $cpage = $posts->currentPage();
-
+                //ignore ID data inaccuracies. Method below counts the number properly.
                 if ($cpage == 1) {
-                  $cpage = 1;
+                  $count = 1;
                 } else {
-                  $cpage = 7;
+                  $count = ($cpage * 6) - 5;
                 }
 
                
               ?>
               @foreach ($posts as $post)      
               <tr>
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $cpage ; ?></td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $count; ?></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $post -> title }}</td>            
                 <td class="flex whitespace-nowrap py-4 text-sm text-right font-medium " >
                     @can('update', $post)
@@ -100,7 +100,7 @@
 
               <?php 
                 //increment counter by 1
-                $cpage++;
+                $count++;
               ?>
               @endforeach
 
@@ -112,7 +112,7 @@
         </div>
           <!-- pagination  -->
           <div class="mt-2">
-          {{ $posts->onEachSide(2)->links() }}
+          {{ $posts->onEachSide(1)->links() }}
           </div>
           <!-- /pagination -->
 
