@@ -13,14 +13,31 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <x-embed-styles />
+
+        <style>
+            .flex-parent-element {
+                display: flex;
+                width: 100%;
+            }
+
+            .flex-child-element {
+                flex: 1;
+                margin: 10px;
+            }
+
+            .flex-child-element:first-child {
+                margin-right: 20px;
+            }
+
+        </style>
         
 
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-
-            
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
