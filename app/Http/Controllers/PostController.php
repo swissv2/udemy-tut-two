@@ -43,6 +43,13 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
+    //create a simple view of the page
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
+
     public function update(Request $request, Post $post)
     {
         //add permissions
