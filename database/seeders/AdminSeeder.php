@@ -54,5 +54,14 @@ class AdminSeeder extends Seeder
             'role_id' => $userRole->id,
         ]);
 
+        //create a potato account
+        User::create([
+            'name' => 'Mr Potato',
+            'email' => 'mrpotato@spud.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => now(),
+            'role_id' => $userRole->id,
+        ]);
+
     }
 }

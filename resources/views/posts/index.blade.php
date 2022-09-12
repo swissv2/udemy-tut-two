@@ -52,6 +52,7 @@
                                   <thead class="bg-gray-50">
                                   <tr>
                                       <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
+                                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Author</th>
                                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
                                       <th scope="col" class="flex py-3.5 pl-3 pr-4 sm:pr-6 text-right"></th>
                                   </tr>
@@ -61,15 +62,22 @@
                                       //firstItem() represents 1st item in the data sequence for the page
                                       $count = $posts->firstItem();
                                     @endphp  
+
                                     
                                     @foreach ($posts as $post)  
                                       <tr>
                                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $count }}</td>
+                                          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $post->name }}</td>
                                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><a href="{{ route('posts.show', $post->id) }}" class="hover:underline">{{ $post -> title }}</a></td>
                                           <td class="flex whitespace-nowrap py-4 pl-3 pr-4 text-right float-right text-sm font-medium sm:pl-6">
-                                            @can('update', $post)  
+                                            
+                                            <!-- App\Models\Post::class -->
+                                            <!-- can('update', $post) --> 
+                                            @can('update',$post)  
                                               [<a href="{{ route('posts.edit', $post->id ) }}" class="text-indigo-600 hover:text-indigo-900 hover:underline">Edit<span class="sr-only">, Edit</span></a>]&nbsp;
-                                            @endcan                                     
+                                            @endcan   
+                                            
+                                            <!-- can('delete', $post)  -->
 
                                             @can('delete', $post)
                                               <form method="POST"

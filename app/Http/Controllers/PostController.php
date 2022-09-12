@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -12,6 +14,9 @@ class PostController extends Controller
     {
         $posts = Post::paginate(6);
         //$posts = Post::all();
+
+        //test query of a view
+        //$posts = DB::table('view_user_posts')->paginate(6);
 
         return view('posts.index', compact('posts'));
     }
@@ -24,13 +29,26 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(User $user, Request $request)
     {
        //authorize the store
         $this->authorize('create', Post::class);
 
-        $validated = $request->validate(['title' => 'required', 'body' => 'required']);
-        Post::create($validated);
+        $validated = $request->validate([
+            'title' => 'required', 
+            'body' => 'required'
+        ]);
+
+        $id = Auth::id();
+
+        $validated = Post::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'user_id_fk' => $id
+        ]);
+
+        //dd($validated);
+        //Post::create($validated);
 
         return to_route('posts.index')->with('message', 'New post added to database.');
     }
@@ -55,6 +73,8 @@ class PostController extends Controller
         //add permissions
         $this->authorize('update', Post::class);   
 
+        //$this->authorize('update', DB::class); 
+
         $validated = $request->validate(['title' => 'required', 'body' => 'required']);
         $post->update($validated);
 
@@ -66,6 +86,5 @@ class PostController extends Controller
         $post->delete();
         return to_route('posts.index')->with('message', 'Post deleted from database.');
     }
-
 
 }

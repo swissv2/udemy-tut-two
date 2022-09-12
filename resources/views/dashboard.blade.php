@@ -11,8 +11,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 
                     <div class="flex-parent-element">
-                        <div class="flex-child-element magenta"> <x-embed url="https://www.youtube.com/watch?v=v27M_RgrLzU"  /> test caption 1</div>
-                        <div class="flex-child-element green"> <x-embed url="https://www.youtube.com/watch?v=jzBneaWSswY"  /> test caption 2</div>
+                        <div class="flex-child-element magenta"> <x-embed url="https://www.youtube.com/watch?v=nAzy7wWSTfE"  /> Iga Swiatek US Open Run 2022</div>
+                        <div class="flex-child-element green"> <x-embed url="https://www.youtube.com/watch?v=SEFnfcfvLkw"  /> Carlos Alcaraz Us Open Run 2022</div>
                       </div>
                       
                 </div>
