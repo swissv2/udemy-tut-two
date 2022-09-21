@@ -22,7 +22,7 @@
                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Username</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Role</th>
-                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                <th scope="col" class="relative py-5 pl-3 pr-4 sm:pr-6" style="width:40px">
                   <span class="sr-only">Edit</span>
                 </th>
               </tr>
@@ -38,10 +38,8 @@
               <tr>
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><?php echo $count; ?></td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user -> name }}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> 
-                   {{ $user->role->name }}
-                </td>                
-                <td class="flex whitespace-nowrap py-4 text-sm text-right font-medium " >
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->role->name }}</td>                
+                <td class="whitespace-nowrap px-12 py-4 text-sm text-right font-medium " style="width:40px">
                     [<a href="{{ route('admin.users.edit', $user->id ) }}" class="text-indigo-600 hover:underline text-right"> Edit </a>] &nbsp;
                     <form method="POST"
                           action="{{ route('admin.users.destroy', $user->id) }}"

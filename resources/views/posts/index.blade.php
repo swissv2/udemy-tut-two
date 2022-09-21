@@ -41,7 +41,7 @@
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </button>
                         </div>                
-                        @endif
+                      @endif
                       <!-- end notification message -->  
 
                       <div class="mt-8 flex flex-col">
@@ -52,7 +52,6 @@
                                   <thead class="bg-gray-50">
                                   <tr>
                                       <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
-                                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Author</th>
                                       <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Title</th>
                                       <th scope="col" class="flex py-3.5 pl-3 pr-4 sm:pr-6 text-right"></th>
                                   </tr>
@@ -65,9 +64,8 @@
 
                                     
                                     @foreach ($posts as $post)  
-                                      <tr>
+                                        <tr>
                                           <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $count }}</td>
-                                          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $post->name }}</td>
                                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><a href="{{ route('posts.show', $post->id) }}" class="hover:underline">{{ $post -> title }}</a></td>
                                           <td class="flex whitespace-nowrap py-4 pl-3 pr-4 text-right float-right text-sm font-medium sm:pl-6">
                                             
@@ -90,7 +88,7 @@
                                             @endcan
 
                                           </td>
-                                      </tr>
+                                        </tr>
                                       @php
                                         //increment counter by 1
                                         $count++;

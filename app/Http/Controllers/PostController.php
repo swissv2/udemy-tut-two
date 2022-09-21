@@ -13,10 +13,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(6);
-        //$posts = Post::all();
-
-        //test query of a view
-        //$posts = DB::table('view_user_posts')->paginate(6);
+        /* query works but doesn't show the functional data
+        $posts = DB::table('posts')                
+                ->leftJoin('users', 'users.id', '=', 'posts.user_id_fk')
+                ->select('posts.*', 'users.name')                
+                ->paginate(6);
+                */
 
         return view('posts.index', compact('posts'));
     }
